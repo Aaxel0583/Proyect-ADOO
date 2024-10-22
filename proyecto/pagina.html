@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Preinscripción</title>
+    <link rel="stylesheet" href="style.css">
+	<script defer src="java.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Preinscripción de Alumnos</h1>
+        <form id="preinscripcion-form">
+            <label for="primer-apellido">Primer Apellido:</label>
+            <input type="text" id="primer-apellido" required>
+
+            <label for="segundo-apellido">Segundo Apellido:</label>
+            <input type="text" id="segundo-apellido" required>
+
+            <label for="nombres">Nombres:</label>
+            <input type="text" id="nombres" required>
+
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" required>
+                <option value="">Seleccione</option>
+                <option value="MASCULINO">Masculino</option>
+                <option value="FEMENINO">Femenino</option>
+            </select>
+
+            <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha-nacimiento" required>
+
+            <label for="entidad-nacimiento">Entidad de Nacimiento:</label>
+            <input type="text" id="entidad-nacimiento" required>
+
+            <label for="curp">CURP:</label>
+            <input type="text" id="curp" readonly>
+
+            <label for="comprobante-pago">Comprobante de Pago:</label>
+            <input type="file" id="comprobante-pago" accept="image/*" required>
+
+            <button type="button" onclick="guardarDatos()">Guardar</button>
+            <button type="reset">Limpiar</button>
+        </form>
+
+        <h2>Verificación de Pago</h2>
+        <form id="verificacion-form">
+            <label for="verificar-curp">CURP:</label>
+            <input type="text" id="verificar-curp" required>
+            <button type="button" onclick="verificarPago()">Verificar</button>
+        </form>
+
+        <div id="alumno-info" style="display:none;">
+            <h3>Datos del Alumno</h3>
+            <p id="alumno-detalles"></p>
+            <img id="comprobante-img" style="display:none; max-width:100%;">
+            <label>
+                <input type="checkbox" id="validar-pago">
+                Pago Validado
+            </label>
+            <button type="button" onclick="guardarEstatusPago()">Guardar Estatus de Pago</button>
+        </div>
+
+        <h2>Lista de Alumnos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>CURP</th>
+                    <th>Nombre Completo</th>
+                    <th>Estatus de Pago</th>
+                </tr>
+            </thead>
+            <tbody id="alumnos-body"></tbody>
+        </table>
+    </div>
+    <script src="java.js"></script>
+</body>
+</html>
