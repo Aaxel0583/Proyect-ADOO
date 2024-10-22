@@ -1,0 +1,80 @@
+
+CASOS DE USO: Aplicación de Preinscripción de Alumnos en Línea
+
+Caso de Uso 1: Preinscripción de Alumnos
+
+Descripción: Un alumno utiliza la plataforma para registrarse para preinscripción, proporcionando sus datos personales y subiendo el comprobante de pago.
+
+Flujo Normal:
+1. El alumno accede a la plataforma de preinscripción.
+2. Se presenta al alumno un formulario de preinscripción.
+   2.1. El formulario solicita los siguientes datos:
+       - Primer apellido.
+       - Segundo apellido.
+       - Nombres.
+       - Sexo.
+       - Fecha de nacimiento.
+       - Entidad de nacimiento.
+3. El alumno completa el formulario y lo envía.
+4. El sistema genera automáticamente la CURP basada en los datos ingresados.
+   4.1. El sistema muestra la CURP generada al alumno.
+5. El alumno sube una imagen del comprobante de pago del banco.
+6. El sistema verifica que la imagen se haya subido correctamente.
+7. El alumno finaliza la preinscripción.
+8. El sistema almacena la información del alumno en la base de datos y muestra un mensaje de éxito.
+
+Flujos Alternativos:
+- 2.1.1 Si el alumno deja algún campo obligatorio vacío, el sistema muestra un mensaje de error solicitando completar todos los campos requeridos.
+- 4.1.1 Si el sistema no puede generar la CURP (por error en los datos), muestra un mensaje indicando que el alumno debe revisar los datos ingresados.
+- 5.1 Si la imagen del comprobante de pago no cumple con los formatos admitidos (JPG, PNG, PDF), el sistema muestra un mensaje solicitando que se suba una imagen en el formato correcto.
+- 6.1 Si hay un problema técnico durante la subida del comprobante (por ejemplo, falla en la red), el sistema muestra un mensaje de error y solicita intentar de nuevo más tarde.
+- 8.1 Si el servidor de base de datos no está disponible, el sistema muestra un mensaje de error solicitando intentar más tarde.
+
+---
+
+Caso de Uso 2: Verificación de Pago por Parte del Operador
+
+Descripción: Un operador revisa los pagos subidos por los alumnos para validar su autenticidad.
+
+Flujo Normal:
+1. El operador accede a la pantalla de verificación de pagos.
+2. El operador ingresa la CURP del alumno cuyo pago desea verificar.
+3. El sistema muestra los datos del alumno, que incluyen:
+   - Nombre completo.
+   - Sexo.
+   - Fecha de nacimiento.
+   - Entidad de nacimiento.
+4. El sistema muestra la imagen del comprobante de pago subida por el alumno.
+5. El operador revisa la imagen y verifica si es correcta.
+6. El operador marca la casilla de verificación para confirmar que el pago ha sido validado.
+7. El sistema actualiza el estatus de pago del alumno a "Pagado".
+
+Flujos Alternativos:
+- 2.1 Si la CURP ingresada no es válida o no se encuentra en el sistema, el operador recibe un mensaje de error y se le solicita verificar la CURP.
+- 4.1 Si la imagen del comprobante no es visible o es de baja calidad, el operador puede solicitar al alumno que suba un nuevo comprobante.
+- 5.1 Si el operador detecta que el pago no coincide con los datos del alumno, puede rechazar el pago y marcarlo como inválido.
+   - 5.1.1 El sistema actualizará el estatus del pago como "Inválido" y notificará al alumno.
+- 6.1 Si el operador se equivoca al marcar el pago como validado, puede desmarcar la casilla de verificación y corregir el estatus.
+
+---
+
+Caso de Uso 3: Listado de Alumnos con Estatus de Pago
+
+Descripción: El operador visualiza una lista de los alumnos que han completado el proceso de pago, para llevar un control de los preinscritos.
+
+Flujo Normal:
+1. El operador accede a la pantalla de listado de alumnos.
+2. El sistema genera una tabla con los alumnos que han realizado el pago.
+   2.1. La tabla incluye los siguientes datos:
+       - CURP.
+       - Nombre completo.
+       - Estatus de pago ("Pagado" o "No pagado").
+3. El operador puede filtrar la lista por nombre o CURP.
+
+Flujos Alternativos:
+- 2.1.1 Si no hay alumnos registrados o no hay pagos verificados, el sistema muestra un mensaje indicando que no hay registros disponibles.
+- 2.1.2 Si el sistema no puede generar la tabla debido a una falla en la base de datos, muestra un mensaje de error y sugiere intentar de nuevo más tarde.
+- 3.1 Si el operador no encuentra a un alumno específico, puede buscar por filtros más detallados, como estatus de pago o fecha de nacimiento.
+
+---
+
