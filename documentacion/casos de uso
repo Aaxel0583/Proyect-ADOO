@@ -1,40 +1,76 @@
-Casos de Uso: Aplicación de Preinscripción de Alumnos en Línea
-Caso de Uso 1: Preinscripción de Alumnos
-Descripción: Este caso de uso describe el proceso que un alumno debe seguir para registrarse en la plataforma de preinscripción. El alumno proporciona sus datos personales y adjunta el comprobante de pago para completar el proceso.
+             Caso de Uso 1: Realizar Preinscripción en Línea
+Nombre del Caso de Uso: 
+Realizar preinscripción en línea
+Alcance: 
+Sistema de preinscripción en línea para alumnos de Ingeniería de Software.
+Nivel:
+Objetivo, proceso principal de inscripción.
+Actor Principal: 
+Alumno de Ingeniería de Software.
+Stakeholders e Intereses:
+Alumno: 
+Desea evitar filas en el proceso de preinscripción.
+Universidad: 
+Facilita el proceso de inscripción y reduce la carga administrativa.
+Precondiciones: 
+El alumno debe tener acceso a internet y contar con su comprobante de pago.
+Éxito Garantizado (Postcondiciones): El alumno queda registrado en el sistema y su información de pago está verificada.
+Principal Escenario de Éxito:
+El alumno ingresa a la aplicación de preinscripción en línea.
+Proporciona sus datos personales: primer apellido, segundo apellido, nombres, sexo, fecha y entidad de nacimiento.
+El sistema genera y presenta la CURP del alumno.
+El alumno sube la imagen del comprobante de pago.
+El sistema confirma que la preinscripción fue exitosa.
+Extensiones:
+Error en carga de comprobante: Si el archivo del comprobante no es válido, el sistema solicita un archivo correcto.
+Datos incompletos: Si faltan datos personales, el sistema indica al alumno qué información debe completar.
 
-Flujo Normal:
 
-Inicio de Sesión: El alumno ingresa a la plataforma de preinscripción utilizando su usuario y contraseña.
-Formulario de Preinscripción: Se muestra al alumno un formulario con campos obligatorios para capturar su información personal.
-Datos Personales: El formulario solicita al alumno que ingrese su primer apellido, segundo apellido, nombres, sexo, fecha de nacimiento y entidad de nacimiento.
-Envío de Formulario: El alumno completa el formulario con sus datos y lo envía a la plataforma.
-Generación de CURP: El sistema, con base en la información proporcionada, genera automáticamente la CURP del alumno.
-Confirmación de CURP: La plataforma muestra la CURP generada al alumno para su verificación.
-Subida de Comprobante de Pago: El alumno adjunta una imagen del comprobante de pago del banco.
-Validación de Imagen: El sistema verifica que la imagen del comprobante de pago cumpla con los formatos permitidos (JPG, PNG, PDF).
-Finalización de Preinscripción: El alumno completa el proceso de preinscripción.
-Registro en Base de Datos: El sistema almacena la información del alumno en la base de datos y muestra un mensaje de éxito confirmando su registro.
-Flujos Alternativos:
-
-2.1.1 Datos Incompletos: Si el alumno deja algún campo obligatorio vacío, el sistema muestra un mensaje de error solicitando que complete todos los campos requeridos.
-4.1.1 Error en la Generación de CURP: Si el sistema no puede generar la CURP debido a errores en los datos proporcionados, muestra un mensaje indicando que el alumno debe revisar la información ingresada y corregirla.
-5.1 Formato Incorrecto de Imagen: Si la imagen del comprobante de pago no cumple con los formatos admitidos (JPG, PNG, PDF), el sistema muestra un mensaje solicitando que se suba una imagen en el formato correcto.
-6.1 Problema Técnico en la Subida de Imagen: Si hay un problema técnico durante la subida del comprobante (por ejemplo, falla en la red), el sistema muestra un mensaje de error y solicita que se intente de nuevo más tarde.
-8.1 Servidor de Base de Datos No Disponible: Si el servidor de base de datos no está disponible, el sistema muestra un mensaje de error solicitando que se intente de nuevo más tarde.
-Caso de Uso 2: Verificación de Pago por Parte del Operador
-Descripción: Este caso de uso describe el proceso que un operador debe seguir para verificar la autenticidad de los pagos subidos por los alumnos.
-
-Flujo Normal:
-
-Acceso a la Pantalla de Verificación: El operador ingresa a la pantalla de verificación de pagos.
-Búsqueda de Pago: El operador ingresa la CURP del alumno cuyo pago desea verificar.
-Visualización de Datos del Alumno: El sistema muestra los datos del alumno, que incluyen su nombre completo, sexo, fecha de nacimiento y entidad de nacimiento.
-Visualización del Comprobante de Pago: El sistema muestra la imagen del comprobante de pago subida por el alumno.
-Revisión del Comprobante: El operador revisa la imagen del comprobante de pago y verifica su autenticidad.
-Confirmación de Pago: El operador marca la casilla de verificación para confirmar que el pago ha sido validado.
-Actualización del Estatus de Pago: El sistema actualiza el estatus de pago del alumno a "Pagado".
-Flujos Alternativos:
-
-2.1 CURP Inválida o Inexistente: Si la CURP ingresada no es válida o no se encuentra en el sistema, el operador recibe un mensaje de error y se le solicita que verifique la CURP.
-4.1 Problema con la Imagen del Comprobante: Si la imagen del comprobante no es visible o es de baja calidad, el operador puede solicitar al alumno que suba un nuevo comprobante de pago.
-
+                Caso de Uso 2: Verificación de Pago
+Nombre del Caso de Uso: Verificar pago de preinscripción
+Alcance: Validación de pago en el sistema de preinscripción en línea.
+Nivel: Subfunción.
+Actor Principal: 
+Operador de la universidad.
+Stakeholders e Intereses:
+Operador: 
+Necesita validar que el alumno ha completado el pago para formalizar su inscripción.
+Alumno: 
+Desea confirmar que su pago ha sido validado.
+Precondiciones: 
+El alumno ha realizado el pago y ha subido el comprobante.
+Éxito Garantizado (Postcondiciones): El operador valida el pago y el estatus del alumno queda como "Pagado".
+Principal Escenario de Éxito:
+El operador ingresa a la plataforma de validación de pagos.
+Introduce la CURP del alumno para buscar sus datos.
+El sistema presenta los datos del alumno y la imagen del comprobante de pago.
+El operador verifica el comprobante y marca la casilla de validación.
+El sistema actualiza el estatus de pago del alumno a "Pagado".
+Extensiones:
+Comprobante no válido: 
+Si el comprobante no coincide o es ilegible, el operador rechaza la validación y solicita al alumno subir uno nuevo.
+CURP incorrecta: Si la CURP no se encuentra, el sistema indica error y pide al operador verificar los datos.
+            
+             Caso de Uso 3: Generación de Lista de Alumnos con Pago Validado
+Nombre del Caso de Uso: 
+Generar lista de alumnos con pago validado
+Alcance: 
+Visualización de lista de alumnos con pago validado.
+Nivel: 
+Subfunción.
+Actor Principal: 
+Operador de la universidad.
+Stakeholders e Intereses:
+Operador: 
+Necesita ver una lista clara de los alumnos con pago validado para seguimiento administrativo.
+Alumno: 
+Confirmación de que su pago ha sido validado.
+Precondiciones: 
+Los pagos de los alumnos han sido verificados por el operador.
+Éxito Garantizado (Postcondiciones): El sistema muestra una tabla con la CURP, nombre completo y estatus de pago de los alumnos.
+Principal Escenario de Éxito:
+El operador accede a la sección de lista de alumnos con pagos validados.
+El sistema genera automáticamente una tabla con los datos requeridos.
+La lista muestra la CURP, nombre completo y estatus "Pagado" de cada alumno.
+Extensiones:
+Lista vacía: Si no hay alumnos con pago validado, el sistema muestra un mensaje indicando que no hay registros disponibles.
